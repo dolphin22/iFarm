@@ -58,7 +58,7 @@ thread = None
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-users={'dolphin@ifarm.com':{'pw':'test'}}
+users={'admin@ifarm.com':{'pw':'ifarmpw'}}
 
 class User(flask_login.UserMixin):
 	pass
@@ -179,4 +179,4 @@ def getswitches():
 	emit('receiveswitches', {'switches': switches})
 
 if __name__ == '__main__':
-	socketio.run(app, debug=True, host='0.0.0.0', port=1234)
+	socketio.run(app, debug=True, host='0.0.0.0', port=8080)
