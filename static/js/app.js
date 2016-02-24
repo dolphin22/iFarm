@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	var socket = io('http://' + document.domain + ':' + location.port);
-	socket.emit('server', 'request sent');
+	var socket = io.connect('http://' + document.domain + ':' + location.port);
 	socket.on('client', function(data){
 		$('#targettemperature').val(data['targettemperature']);
 		$('#starttime').val(data['starttime']);
@@ -30,11 +29,12 @@ $(document).ready(function(){
 		socket.emit('setendtime2', $('#endtime2').val());
 		return false;
 	});
-
+	
 	$("[name='switch1'],[name='switch2'],[name='switch3'],[name='switch4']").bootstrapSwitch();	
 	setInterval(function(){
 		socket.emit('getswitches');
 		socket.on('receiveswitches', function(switches){
+			console.log(switches)
 			if(switches.switches[0] == '1') {
 				$("[name='switch1']").bootstrapSwitch('state', true, true);
 			} else {

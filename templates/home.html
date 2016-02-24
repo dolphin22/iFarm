@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">iFarm</a>
+	  <p class="navbar-text">Signed in as {{ current_user.id }}</p>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-top">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row">
+<div class="col-md-6">
+<iframe width="450" height="250" style="border: 1px solid #cccccc;" src="http://thingspeak.com/channels/69826/charts/1?dynamic=true"></iframe>
+</div>
+<div class="col-md-6">
+<iframe width="450" height="250" style="border: 1px solid #cccccc;" src="http://thingspeak.com/channels/69826/charts/2?dynamic=true"></iframe>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<form>
+<h3>Target Temperature</h3>
+<div class="input-group">
+<input type="text" id="targettemperature" class="form-control" >
+<span class="input-group-btn">
+<button class="btn btn-default" id="settemperature" type="button">Set Temperature</button>
+</span>
+</div>
+<h3>Timer 1</h3>
+<div class="input-group">
+<input type="text" id="starttime" class="form-control">
+<span class="input-group-btn">
+<button class="btn btn-default" id="setstarttime">Set Start Time 1</button>
+</span>
+</div>
+<div class="input-group">
+<input type="text" id="endtime" class="form-control">
+<span class="input-group-btn">
+<button class="btn btn-default" id="setendtime">Set End Time 1</button> 
+</span>
+</div>
+<h3>Timer 2</h3>
+<div class="input-group">
+<input type="text" id="starttime2" class="form-control">
+<span class="input-group-btn">
+<button class="btn btn-default" id="setstarttime2">Set Start Time 2</button>
+</span>
+</div>
+<div class="input-group">
+<input type="text" id="endtime2" class="form-control">
+<span class="input-group-btn">
+<button class="btn btn-default" id="setendtime2">Set End Time 2</button> 
+</span>
+</div>
+</form>
+</div>
+<div class="col-md-4">
+<h3>Reporting</h3>
+<a href="http://api.thingspeak.com/channels/69826/feed.csv?api_key=D98FD7YB39AOLMMZ&offset=7" class="btn btn-primary">Download Report</a>
+<h3>Switches</h3>
+<div class="input-group">
+<span class="input-group-addon" id="switch1">Switch 1</span>
+<input type="checkbox" class="form-control" name="switch1">
+</div>
+<div class="input-group">
+<span class="input-group-addon" id="switch2">Switch 2</span>
+<input type="checkbox" class="form-control" name="switch2">
+</div>
+<div class="input-group">
+<span class="input-group-addon" id="switch3">Switch 3</span>
+<input type="checkbox" class="form-control" name="switch3">
+</div>
+<div class="input-group">
+<span class="input-group-addon" id="switch4">Switch 4</span>
+<input type="checkbox" class="form-control" name="switch4">
+</div>
+</div>
+{% endblock %}
